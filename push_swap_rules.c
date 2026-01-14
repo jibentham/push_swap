@@ -6,36 +6,57 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:25:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/14 13:42:32 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/14 14:53:19 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-do_rule(char *rule, int *stack_a, int *stack_b)
+#include <stddef.h>
+#include <stdio.h>
+
+int	push_swap_strcmp(const char *s1, const char *s2)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void swap(char *a, char *b)
+{
+	char temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+char *do_rule(char *rule, char *stack)
 {
 	int i;
-	int j;
-	int *temp;
 	
 	i = 0;
-	j = 0;
-	while (stack_a)
+	while (stack[i] != '\0')
 		i++;
-	while (stack_b)
-		j++;
-	if (rule == "sa" && i >= 1)
+	if ((push_swap_strcmp(rule, "sa") || push_swap_strcmp(rule, "sb")) && i >= 1)
 	{
-		temp[0] == stack_a[0];
-		stack_a[0] == stack_a[1];
-		stack_a[1] == temp[0];
+		swap(&stack[0], &stack[1]);
+		return (stack);
 	}
+	return (NULL);
+}
 
-	if (rule == "sb" && j >= 1)
-	{
-		temp[0] == stack_b[0];
-		stack_b[0] == stack_b[1];
-		stack_b[1] == temp[0];
-	}
+int main(void)
+{
+	char stack_a[] = "10234";
+	// char stack_b[] = "10234";
 
-	
-		
+	do_rule("sa", stack_a);
+	printf("%s", stack_a);
+	return (0);
 }
