@@ -6,12 +6,13 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/19 14:55:03 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:52:00 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct node 
 {
@@ -75,6 +76,30 @@ int	is_numeric(char *element)
 	return (1);
 }
 
+int no_duplicates(struct node **head)
+{
+	int count;
+	struct node *temp1;
+	struct node *temp2;
+		
+	count = 0;
+	temp1 = *head;
+	while (temp1 != NULL)
+	{
+		temp2 = *head;
+		while (temp2 != NULL && temp2 != temp1)
+		{
+			if (strcmp(temp1->element, temp2->element) == 0)
+				count++;
+			temp2 = temp2->next;
+		}
+		temp1 = temp1->next;
+	}
+	if (count >= 1)
+		return (0);
+	return (1);
+}
+
 int main (int argc, char **argv)
 {
 	struct node *head_a;
@@ -88,7 +113,17 @@ int main (int argc, char **argv)
 	{
 		if (is_numeric(argv[i]))
 			end_insert(&head_a, argv[i]);
+		else
+		{
+			printf("ERROR!");
+			return(0);
+		}
 		i++;
+	}
+	if (no_duplicates(&head_a) == 0)
+	{
+		printf("ERROR!");
+		return (0);
 	}
 	print_list(head_a);
 	return (0);
