@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/19 14:24:01 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/19 14:55:03 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ void end_insert(struct node **head_ref, char *element)
 	}
 }
 
+void head_insert(struct node **head_ref, char *element)
+{
+	struct node *new_node = create_node(element);
+	new_node->next = *head_ref;
+	*head_ref = new_node;
+}
+
 void print_list(struct node *head)
 {
 	struct node *temp = head;
@@ -54,18 +61,35 @@ void print_list(struct node *head)
 	printf("NULL\n");
 }
 
-int main (int argc, char **argv)
+int	is_numeric(char *element)
 {
-	struct node *head;
 	int i;
 
-	head = NULL;
+	i = 0;
+	while (element[i] != '\0')
+	{
+		if (!(element[i] >= 48 && element[i] <= 57))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int main (int argc, char **argv)
+{
+	struct node *head_a;
+	struct node *head_b;
+	int i;
+
+	head_a = NULL;
+	head_b = NULL;
 	i = 1;
 	while (i < argc)
 	{
-		end_insert(&head, argv[i]);
+		if (is_numeric(argv[i]))
+			end_insert(&head_a, argv[i]);
 		i++;
 	}
-	print_list(head);
+	print_list(head_a);
 	return (0);
 }
