@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/19 18:52:00 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:59:58 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void print_list(struct node *head)
 		printf("%s\n", temp->element);
 		temp = temp->next;
 	}
-	printf("NULL\n");
 }
 
 int	is_numeric(char *element)
@@ -115,14 +114,14 @@ int main (int argc, char **argv)
 			end_insert(&head_a, argv[i]);
 		else
 		{
-			printf("ERROR!");
+			printf("Error\n");
 			return(0);
 		}
 		i++;
 	}
 	if (no_duplicates(&head_a) == 0)
 	{
-		printf("ERROR!");
+		printf("Error\n");
 		return (0);
 	}
 	print_list(head_a);
