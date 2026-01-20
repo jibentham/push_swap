@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/19 18:59:58 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/20 18:27:41 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ struct node *create_node(char *element)
 {
 	struct  node *new_node = (struct node*)malloc(sizeof(struct node));
 	if (new_node == NULL)
-		return (NULL);
+		return (free(new_node), NULL);
 	new_node->element = element;
 	new_node->next = NULL;
 	return (new_node);
@@ -115,15 +115,17 @@ int main (int argc, char **argv)
 		else
 		{
 			printf("Error\n");
-			return(0);
+			return (1);
 		}
 		i++;
 	}
 	if (no_duplicates(&head_a) == 0)
 	{
 		printf("Error\n");
-		return (0);
+		return (1);
 	}
 	print_list(head_a);
+	
 	return (0);
 }
+
