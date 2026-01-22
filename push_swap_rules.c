@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:25:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/22 17:10:04 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:45:08 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,22 @@ void rotate_list(struct node **head)
 	tail->next = *head;
 	tail = tail->next;
 	*head = tail->next;
+	tail->next = NULL;
+}
+
+void reverse_rotate_list(struct node **head)
+{
+	struct node *tail;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return;
+	tail = *head;
+	while (tail->next != NULL)
+		tail = tail->next;
+	tail->next = *head;
+	*head = tail;
+	tail = tail->next;
+	while (tail->next != *head)
+		tail = tail->next;
 	tail->next = NULL;
 }
