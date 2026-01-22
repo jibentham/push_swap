@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:25:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/22 16:34:02 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:10:04 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void push_node(struct node **src_ref, struct node **dest_ref)
 {
 	struct node *new_node;
 	
-	new_node = *src_ref;
 	if (*src_ref == NULL)
 		return;
+	new_node = *src_ref;
 	*src_ref = (*src_ref)->next;
 	new_node->next = *dest_ref;
 	*dest_ref = new_node;
@@ -36,4 +36,19 @@ void swap_node(struct node **head)
 	first->next = second->next;
 	second->next = first;
 	*head = second;
+}
+
+void rotate_list(struct node **head)
+{
+	struct node *tail;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return;
+	tail = *head;
+	while (tail->next != NULL)
+		tail = tail->next;
+	tail->next = *head;
+	tail = tail->next;
+	*head = tail->next;
+	tail->next = NULL;
 }
