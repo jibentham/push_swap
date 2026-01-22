@@ -6,57 +6,34 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:25:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/14 14:53:19 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:34:02 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdio.h>
+#include "push_swap.h"
 
-int	push_swap_strcmp(const char *s1, const char *s2)
+void push_node(struct node **src_ref, struct node **dest_ref)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void swap(char *a, char *b)
-{
-	char temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-char *do_rule(char *rule, char *stack)
-{
-	int i;
+	struct node *new_node;
 	
-	i = 0;
-	while (stack[i] != '\0')
-		i++;
-	if ((push_swap_strcmp(rule, "sa") || push_swap_strcmp(rule, "sb")) && i >= 1)
-	{
-		swap(&stack[0], &stack[1]);
-		return (stack);
-	}
-	return (NULL);
+	new_node = *src_ref;
+	if (*src_ref == NULL)
+		return;
+	*src_ref = (*src_ref)->next;
+	new_node->next = *dest_ref;
+	*dest_ref = new_node;
 }
 
-int main(void)
+void swap_node(struct node **head)
 {
-	char stack_a[] = "10234";
-	// char stack_b[] = "10234";
+	struct node *first;
+	struct node *second;
 
-	do_rule("sa", stack_a);
-	printf("%s", stack_a);
-	return (0);
+	if (*head == NULL || (*head)->next == NULL)
+		return;
+	first = *head;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*head = second;
 }
