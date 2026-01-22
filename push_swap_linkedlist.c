@@ -6,26 +6,18 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/20 18:27:41 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/01/22 19:12:05 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-struct node 
-{
-	char *element;
-	struct node *next;
-};
+#include "push_swap.h"
 
 struct node *create_node(char *element)
 {
 	struct  node *new_node = (struct node*)malloc(sizeof(struct node));
 	if (new_node == NULL)
 		return (free(new_node), NULL);
-	new_node->element = element;
+	new_node->element = atoi(element);
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -56,7 +48,7 @@ void print_list(struct node *head)
 	struct node *temp = head;
 	while (temp != NULL)
 	{
-		printf("%s\n", temp->element);
+		printf("%d\n", temp->element);
 		temp = temp->next;
 	}
 }
@@ -88,7 +80,7 @@ int no_duplicates(struct node **head)
 		temp2 = *head;
 		while (temp2 != NULL && temp2 != temp1)
 		{
-			if (strcmp(temp1->element, temp2->element) == 0)
+			if (temp1->element == temp2->element)
 				count++;
 			temp2 = temp2->next;
 		}
