@@ -6,7 +6,7 @@
 /*   By: jibentham <jibentham@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 18:19:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/30 20:19:44 by jibentham        ###   ########.fr       */
+/*   Updated: 2026/02/02 15:43:35 by jibentham        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,12 @@ void total_cost(struct s_node *head_ref)
 {
 	while (head_ref != NULL)
 	{
-		head_ref->total_cost = head_ref->to_top_cost + head_ref->to_target_cost;
+		if (head_ref->to_top_cost >= 0 && head_ref->to_target_cost >= 0)
+			head_ref->total_cost = get_max(get_absolute(head_ref->to_top_cost), 
+				get_absolute(head_ref->to_target_cost));
+		else
+			head_ref->total_cost = get_absolute(head_ref->to_top_cost) 
+				+ get_absolute(head_ref->to_target_cost);	
 		head_ref = head_ref->next;
 	}
 }
