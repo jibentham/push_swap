@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   costs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jibentham <jibentham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 18:19:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/02 15:43:35 by jibentham        ###   ########.fr       */
+/*   Updated: 2026/02/04 13:30:46 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void to_top_cost(struct s_node *head_ref)
+void	to_top_cost(struct s_node *head_ref)
 {
-	int size;
-	int i;
-	struct s_node *tail;
-	struct s_node *parser;
+	int				size;
+	int				i;
+	struct s_node	*tail;
+	struct s_node	*parser;
 
 	size = 0;
 	i = 0;
@@ -39,7 +39,7 @@ void to_top_cost(struct s_node *head_ref)
 	}
 }
 
-void to_target_cost(struct s_node *head_a, struct s_node *head_b)
+void	to_target_cost(struct s_node *head_a, struct s_node *head_b)
 {
 	to_top_cost(head_b);
 	while (head_a != NULL)
@@ -50,16 +50,16 @@ void to_target_cost(struct s_node *head_a, struct s_node *head_b)
 	}
 }
 
-void total_cost(struct s_node *head_ref)
+void	total_cost(struct s_node *head_ref)
 {
 	while (head_ref != NULL)
 	{
 		if (head_ref->to_top_cost >= 0 && head_ref->to_target_cost >= 0)
-			head_ref->total_cost = get_max(get_absolute(head_ref->to_top_cost), 
-				get_absolute(head_ref->to_target_cost));
+			head_ref->total_cost = get_max(get_absolute(head_ref->to_top_cost),
+					get_absolute(head_ref->to_target_cost));
 		else
-			head_ref->total_cost = get_absolute(head_ref->to_top_cost) 
-				+ get_absolute(head_ref->to_target_cost);	
+			head_ref->total_cost = get_absolute(head_ref->to_top_cost)
+				+ get_absolute(head_ref->to_target_cost);
 		head_ref = head_ref->next;
 	}
 }

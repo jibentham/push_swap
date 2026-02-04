@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   costs_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jibentham <jibentham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 16:32:40 by jibentham         #+#    #+#             */
-/*   Updated: 2026/01/30 20:38:25 by jibentham        ###   ########.fr       */
+/*   Updated: 2026/02/04 13:37:32 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-struct s_node *find_largest_element(struct s_node *head_ref)
+struct s_node	*find_largest_element(struct s_node *head_ref)
 {
-	struct s_node *temp;
+	struct s_node	*temp;
 
 	if (head_ref == NULL)
 		return (NULL);
@@ -28,18 +28,18 @@ struct s_node *find_largest_element(struct s_node *head_ref)
 	return (temp);
 }
 
-struct s_node *find_target(struct s_node *head_a, struct s_node *head_b)
+struct s_node	*find_target(struct s_node *head_a, struct s_node *head_b)
 {
-	struct s_node *current;
-	struct s_node *closest_node;
-	int closest_element;
+	struct s_node	*current;
+	struct s_node	*closest_node;
+	int				closest_element;
 
 	closest_node = NULL;
 	closest_element = INT_MIN;
 	current = head_b;
 	while (current != NULL)
 	{
-		if (current->element < head_a->element 
+		if (current->element < head_a->element
 			&& current->element > closest_element)
 		{
 			closest_element = current->element;
@@ -52,9 +52,9 @@ struct s_node *find_target(struct s_node *head_a, struct s_node *head_b)
 	return (find_largest_element(head_b));
 }
 
-void add_target(struct s_node *head_a, struct s_node *head_b)
+void	add_target(struct s_node *head_a, struct s_node *head_b)
 {
-	struct s_node *parser;
+	struct s_node	*parser;
 
 	parser = head_a;
 	while (parser != NULL)
@@ -64,16 +64,16 @@ void add_target(struct s_node *head_a, struct s_node *head_b)
 	}
 }
 
-int get_absolute(int nb)
+int	get_absolute(int nb)
 {
-    if (nb < 0)
-        return (-nb);
-    return (nb);
+	if (nb < 0)
+		return (-nb);
+	return (nb);
 }
 
-int get_max(int a, int b)
+int	get_max(int a, int b)
 {
-    if (a > b)
-        return (a);
-    return (b);
+	if (a > b)
+		return (a);
+	return (b);
 }

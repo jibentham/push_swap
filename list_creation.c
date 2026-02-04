@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_linkedlist.c                             :+:      :+:    :+:   */
+/*   list_creation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jibentham <jibentham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/01/30 14:54:50 by jibentham        ###   ########.fr       */
+/*   Updated: 2026/02/04 12:24:47 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-struct s_node *create_node(char *element)
+struct s_node	*create_node(char *element)
 {
-	struct  s_node *new_node = (struct s_node*)malloc(sizeof(struct s_node));
+	struct s_node	*new_node;
+
+	new_node = (struct s_node *)malloc(sizeof(struct s_node));
 	if (new_node == NULL)
 		return (free(new_node), NULL);
 	new_node->element = atoi(element);
@@ -22,14 +24,17 @@ struct s_node *create_node(char *element)
 	return (new_node);
 }
 
-void end_insert(struct s_node **head_ref, char *element)
+void	end_insert(struct s_node **head_ref, char *element)
 {
-	struct s_node *new_node = create_node(element);
+	struct s_node	*new_node;
+	struct s_node	*temp;
+
+	new_node = create_node(element);
 	if (*head_ref == NULL)
 		*head_ref = new_node;
-	else 
+	else
 	{
-		struct s_node *temp = *head_ref;
+		temp = *head_ref;
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new_node;
@@ -43,9 +48,11 @@ void end_insert(struct s_node **head_ref, char *element)
 // 	*head_ref = new_node;
 // }
 
-void print_list(struct s_node *head)
+void	print_list(struct s_node *head)
 {
-	struct s_node *temp = head;
+	struct s_node	*temp;
+
+	temp = head;
 	while (temp != NULL)
 	{
 		printf("%d\n", temp->element);
@@ -55,7 +62,7 @@ void print_list(struct s_node *head)
 
 int	is_numeric(char *element)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (element[i] != '\0')
@@ -67,12 +74,12 @@ int	is_numeric(char *element)
 	return (1);
 }
 
-int no_duplicates(struct s_node *head)
+int	no_duplicates(struct s_node *head)
 {
-	int count;
-	struct s_node *temp1;
-	struct s_node *temp2;
-		
+	int				count;
+	struct s_node	*temp1;
+	struct s_node	*temp2;
+
 	count = 0;
 	temp1 = head;
 	while (temp1 != NULL)

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jibentham <jibentham@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:30:29 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/03 16:02:43 by jibentham        ###   ########.fr       */
+/*   Updated: 2026/02/04 12:26:06 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	struct s_node *head_a;
-	struct s_node *head_b;
-	struct s_node *cheapest;
-	int i;
+	struct s_node	*head_a;
+	struct s_node	*head_b;
+	struct s_node	*cheapest;
+	int				i;
 
 	head_a = NULL;
 	head_b = NULL;
@@ -47,7 +47,6 @@ int main (int argc, char **argv)
 		add_target(head_a, head_b);
 		to_target_cost(head_a, head_b);
 		total_cost(head_a);
-
 		cheapest = find_cheapest(head_a);
 		execute_operations(&head_a, &head_b, cheapest);
 	}
@@ -55,7 +54,7 @@ int main (int argc, char **argv)
 		rotate_list(&head_b);
 	while (stack_size(head_b) > 0)
 		push_node(&head_b, &head_a);
-	while(head_a-> element < find_largest_element(head_a)->element)
+	while (head_a-> element < find_largest_element(head_a)->element)
 		rotate_list(&head_a);
 	rotate_list(&head_a);
 	print_list(head_a);

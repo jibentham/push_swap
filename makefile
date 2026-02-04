@@ -20,8 +20,8 @@ SRC =   costs_utils.c \
 		instruction_set.c \
 		list_creation.c \
 		main.c \
-		operations_utils.c \
-		operations.c \
+		instruction_utils.c \
+		instruction_execution.c \
 		small_sorts.c \
 
 OBJS = $(SRC:.c=.o)
