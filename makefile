@@ -3,17 +3,16 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jibentham <jibentham@student.42.fr>        +#+  +:+       +#+         #
+#    By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/02 15:25:00 by jibentham         #+#    #+#              #
-#    Updated: 2026/02/04 10:27:04 by jibentham        ###   ########.fr        #
+#    Updated: 2026/02/10 17:03:48 by jbentham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-AR = ar rcs
 
 SRC =   costs_utils.c \
 		costs.c \
@@ -22,6 +21,7 @@ SRC =   costs_utils.c \
 		main.c \
 		instruction_utils.c \
 		instruction_execution.c \
+		ft_atoi.c \
 		small_sorts.c \
 
 OBJS = $(SRC:.c=.o)
@@ -30,7 +30,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "Linking library $@"
-	$(AR) $@ $^
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
   
 %.o: %.c push_swap.h
 	@echo "Compiling $<"
