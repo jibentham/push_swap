@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 13:59:37 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/04 12:31:57 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/10 17:39:15 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,14 @@ int	stack_size(struct s_node *head_ref)
 		parser = parser->next;
 	}
 	return (size);
+}
+
+struct s_node *find_last_node(struct s_node *head_ref)
+{
+	struct s_node *parser;
+
+	parser = head_ref;
+	while (parser != NULL)
+		parser = parser->next;
+	return (parser);
 }
