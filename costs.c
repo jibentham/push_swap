@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 18:19:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/04 13:30:46 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/04 23:23:17 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,36 @@ void	to_top_cost(struct s_node *head_ref)
 	}
 }
 
-void	to_target_cost(struct s_node *head_a, struct s_node *head_b)
+void	to_target_cost(struct s_node *head_ref)
 {
-	to_top_cost(head_b);
-	while (head_a != NULL)
+	struct s_node	*parser;
+
+	parser = head_ref;
+	while (parser != NULL)
 	{
-		if (head_a->target != NULL)
-			head_a->to_target_cost = head_a->target->to_top_cost;
-		head_a = head_a->next;
+		if (parser->target != NULL)
+			parser->to_target_cost = parser->target->to_top_cost;
+		parser = parser->next;
 	}
 }
 
 void	total_cost(struct s_node *head_ref)
 {
-	while (head_ref != NULL)
+	struct s_node	*parser;
+
+	parser = head_ref;
+	while (parser != NULL)
 	{
-		if (head_ref->to_top_cost >= 0 && head_ref->to_target_cost >= 0)
-			head_ref->total_cost = get_max(get_absolute(head_ref->to_top_cost),
-					get_absolute(head_ref->to_target_cost));
+		if (parser->to_top_cost >= 0 && parser->to_target_cost >= 0)
+			parser->total_cost = get_max(get_absolute(parser->to_top_cost),
+					get_absolute(parser->to_target_cost));
+		else if (parser->to_top_cost < 0 && parser->to_target_cost < 0)
+			parser->total_cost = get_max(get_absolute(parser->to_top_cost),
+					get_absolute(parser->to_target_cost));
 		else
-			head_ref->total_cost = get_absolute(head_ref->to_top_cost)
-				+ get_absolute(head_ref->to_target_cost);
-		head_ref = head_ref->next;
+			parser->total_cost = get_absolute(parser->to_top_cost)
+				+ get_absolute(parser->to_target_cost);
+		parser->total_cost += 1;
+		parser = parser->next;
 	}
 }
