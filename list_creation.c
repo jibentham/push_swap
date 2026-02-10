@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/04 12:24:47 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/10 16:42:42 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ struct s_node	*create_node(char *element)
 	new_node = (struct s_node *)malloc(sizeof(struct s_node));
 	if (new_node == NULL)
 		return (free(new_node), NULL);
-	new_node->element = atoi(element);
+	new_node->element = ft_atoi(element);
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -41,13 +41,6 @@ void	end_insert(struct s_node **head_ref, char *element)
 	}
 }
 
-// void head_insert(struct s_node **head_ref, char *element)
-// {
-// 	struct s_node *new_node = create_node(element);
-// 	new_node->next = *head_ref;
-// 	*head_ref = new_node;
-// }
-
 void	print_list(struct s_node *head)
 {
 	struct s_node	*temp;
@@ -67,7 +60,7 @@ int	is_numeric(char *element)
 	i = 0;
 	while (element[i] != '\0')
 	{
-		if (!(element[i] >= 48 && element[i] <= 57))
+		if (!((element[i] >= 48 && element[i] <= 57) || element[0] == '-'))
 			return (0);
 		i++;
 	}
