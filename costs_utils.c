@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 16:32:40 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/04 13:37:32 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/10 16:58:54 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ struct s_node	*find_largest_element(struct s_node *head_ref)
 	return (temp);
 }
 
-struct s_node	*find_target(struct s_node *head_a, struct s_node *head_b)
+struct s_node	*find_target(struct s_node *node, struct s_node *head_b)
 {
 	struct s_node	*current;
 	struct s_node	*closest_node;
@@ -39,7 +39,7 @@ struct s_node	*find_target(struct s_node *head_a, struct s_node *head_b)
 	current = head_b;
 	while (current != NULL)
 	{
-		if (current->element < head_a->element
+		if (current->element < node->element
 			&& current->element > closest_element)
 		{
 			closest_element = current->element;
@@ -59,7 +59,7 @@ void	add_target(struct s_node *head_a, struct s_node *head_b)
 	parser = head_a;
 	while (parser != NULL)
 	{
-		parser->target = find_target(head_a, head_b);
+		parser->target = find_target(parser, head_b);
 		parser = parser->next;
 	}
 }
@@ -76,4 +76,20 @@ int	get_max(int a, int b)
 	if (a > b)
 		return (a);
 	return (b);
+}
+
+struct s_node	*find_smallest_element(struct s_node *head_ref)
+{
+	struct s_node	*temp;
+
+	if (head_ref == NULL)
+		return (NULL);
+	temp = head_ref;
+	while (head_ref != NULL)
+	{
+		if (head_ref->element < temp->element)
+			temp = head_ref;
+		head_ref = head_ref->next;
+	}
+	return (temp);
 }
