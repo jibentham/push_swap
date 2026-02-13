@@ -6,7 +6,7 @@
 #    By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/02 15:25:00 by jibentham         #+#    #+#              #
-#    Updated: 2026/02/10 17:03:48 by jbentham         ###   ########.fr        #
+#    Updated: 2026/02/13 15:31:32 by jbentham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC =   costs_utils.c \
 		costs.c \
 		instruction_set.c \
 		list_creation.c \
+		main_utils.c \
 		main.c \
 		instruction_utils.c \
 		instruction_execution.c \
