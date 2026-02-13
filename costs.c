@@ -6,18 +6,18 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 18:19:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/04 23:23:17 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:20:22 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	to_top_cost(struct s_node *head_ref)
+void	to_top_cost(t_node *head_ref)
 {
-	int				size;
-	int				i;
-	struct s_node	*tail;
-	struct s_node	*parser;
+	int		size;
+	int		i;
+	t_node	*tail;
+	t_node	*parser;
 
 	size = 0;
 	i = 0;
@@ -39,9 +39,9 @@ void	to_top_cost(struct s_node *head_ref)
 	}
 }
 
-void	to_target_cost(struct s_node *head_ref)
+void	to_target_cost(t_node *head_ref)
 {
-	struct s_node	*parser;
+	t_node	*parser;
 
 	parser = head_ref;
 	while (parser != NULL)
@@ -54,7 +54,7 @@ void	to_target_cost(struct s_node *head_ref)
 
 void	total_cost(struct s_node *head_ref)
 {
-	struct s_node	*parser;
+	t_node	*parser;
 
 	parser = head_ref;
 	while (parser != NULL)

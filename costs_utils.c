@@ -6,13 +6,13 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 16:32:40 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/10 16:58:54 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:16:13 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-struct s_node	*find_largest_element(struct s_node *head_ref)
+t_node	*find_largest_element(t_node *head_ref)
 {
 	struct s_node	*temp;
 
@@ -28,11 +28,11 @@ struct s_node	*find_largest_element(struct s_node *head_ref)
 	return (temp);
 }
 
-struct s_node	*find_target(struct s_node *node, struct s_node *head_b)
+t_node	*find_target(t_node *node, t_node *head_b)
 {
-	struct s_node	*current;
-	struct s_node	*closest_node;
-	int				closest_element;
+	t_node	*current;
+	t_node	*closest_node;
+	int		closest_element;
 
 	closest_node = NULL;
 	closest_element = INT_MIN;
@@ -52,9 +52,9 @@ struct s_node	*find_target(struct s_node *node, struct s_node *head_b)
 	return (find_largest_element(head_b));
 }
 
-void	add_target(struct s_node *head_a, struct s_node *head_b)
+void	add_target(t_node *head_a, t_node *head_b)
 {
-	struct s_node	*parser;
+	t_node	*parser;
 
 	parser = head_a;
 	while (parser != NULL)
@@ -76,20 +76,4 @@ int	get_max(int a, int b)
 	if (a > b)
 		return (a);
 	return (b);
-}
-
-struct s_node	*find_smallest_element(struct s_node *head_ref)
-{
-	struct s_node	*temp;
-
-	if (head_ref == NULL)
-		return (NULL);
-	temp = head_ref;
-	while (head_ref != NULL)
-	{
-		if (head_ref->element < temp->element)
-			temp = head_ref;
-		head_ref = head_ref->next;
-	}
-	return (temp);
 }

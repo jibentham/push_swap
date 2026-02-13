@@ -6,17 +6,17 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 13:58:27 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/04 23:23:19 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:20:47 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	execute_operations(struct s_node **head_a, struct s_node **head_b, struct s_node *cheapest)
+void	execute_operations(t_node **head_a, t_node **head_b, t_node *cheapest)
 {
-	int a;
-	int b;
-	
+	int	a;
+	int	b;
+
 	a = cheapest->to_top_cost;
 	b = cheapest->to_target_cost;
 	while (a > 0 && b > 0)

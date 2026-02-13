@@ -6,13 +6,13 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:25:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/04 23:23:21 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:14:44 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_node(struct s_node **src_ref, struct s_node **dest_ref)
+void	push_node(t_node **src_ref, t_node **dest_ref)
 {
 	struct s_node	*new_node;
 
@@ -24,10 +24,10 @@ void	push_node(struct s_node **src_ref, struct s_node **dest_ref)
 	*dest_ref = new_node;
 }
 
-void	swap_node(struct s_node **head)
+void	swap_node(t_node **head)
 {
-	struct s_node	*first;
-	struct s_node	*second;
+	t_node	*first;
+	t_node	*second;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
@@ -38,9 +38,9 @@ void	swap_node(struct s_node **head)
 	*head = second;
 }
 
-void	rotate_list(struct s_node **head)
+void	rotate_list(t_node **head)
 {
-	struct s_node	*tail;
+	t_node	*tail;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
@@ -53,9 +53,9 @@ void	rotate_list(struct s_node **head)
 	tail->next = NULL;
 }
 
-void	reverse_rotate_list(struct s_node **head)
+void	reverse_rotate_list(t_node **head)
 {
-	struct s_node	*tail;
+	t_node	*tail;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return ;

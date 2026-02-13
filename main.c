@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 14:30:29 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/10 17:14:53 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/13 17:41:47 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	struct s_node	*head_a;
-	struct s_node	*head_b;
-	struct s_node	*cheapest;
-	int				i;
+	t_node	*head_a;
+	t_node	*head_b;
+	t_node	*cheapest;
+	int		stack_created;
 
 	head_a = NULL;
 	head_b = NULL;
 	cheapest = NULL;
-	i = 1;
-	while (i < argc)
-	{
-		if (is_numeric(argv[i]))
-			end_insert(&head_a, argv[i]);
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
-		i++;
-	}
-	if (no_duplicates(head_a) == 0)
-	{
-		printf("Error\n");
-		return (1);
-	}
-	if (head_a == NULL)
-		return (1);
+	
+	stack_created = create_stack(argc, argv, &head_a);
+	if (stack_created == 0)
+		return(1);
 	while (stack_size(head_a) > 0)
 	{
 		to_top_cost(head_a);
@@ -56,16 +41,15 @@ int	main(int argc, char **argv)
 		push_node(&head_b, &head_a);
 		printf("pa\n");
 	}
-	while (head_a-> element > find_smallest_element(head_a)->element)
+	if (head_a != NULL)
 	{
-		rotate_list(&head_a);
-		printf("ra\n");
+		while (head_a-> element > find_smallest_element(head_a)->element)
+		{
+			rotate_list(&head_a);
+			printf("ra\n");
+		}
 	}
-	// print_list(head_a);
-	while (head_a != NULL)
-	{
-		free(head_a);
-		head_a = head_a->next;
-	}
+	free_list(head_a);
+	free_list(head_b);
 	return (0);
 }

@@ -6,28 +6,28 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 13:59:37 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/10 17:39:15 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:22:50 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_both(struct s_node **head_a, struct s_node **head_b)
+void	rotate_both(t_node **head_a, t_node **head_b)
 {
 	rotate_list(head_a);
 	rotate_list(head_b);
 }
 
-void	reverse_rotate_both(struct s_node **head_a, struct s_node **head_b)
+void	reverse_rotate_both(t_node **head_a, t_node **head_b)
 {
 	reverse_rotate_list(head_a);
 	reverse_rotate_list(head_b);
 }
 
-struct s_node	*find_cheapest(struct s_node *head_ref)
+t_node	*find_cheapest(t_node *head_ref)
 {
-	struct s_node	*cheapest;
-	struct s_node	*parser;
+	t_node	*cheapest;
+	t_node	*parser;
 
 	if (head_ref == NULL)
 		return (NULL);
@@ -42,10 +42,10 @@ struct s_node	*find_cheapest(struct s_node *head_ref)
 	return (cheapest);
 }
 
-int	stack_size(struct s_node *head_ref)
+int	stack_size(t_node *head_ref)
 {
-	int				size;
-	struct s_node	*parser;
+	int		size;
+	t_node	*parser;
 
 	size = 0;
 	parser = head_ref;
@@ -57,9 +57,9 @@ int	stack_size(struct s_node *head_ref)
 	return (size);
 }
 
-struct s_node *find_last_node(struct s_node *head_ref)
+t_node	*find_last_node(t_node *head_ref)
 {
-	struct s_node *parser;
+	t_node	*parser;
 
 	parser = head_ref;
 	while (parser != NULL)
