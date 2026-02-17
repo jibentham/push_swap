@@ -6,7 +6,7 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 13:50:54 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/13 17:39:14 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:11:06 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	swap_node(t_node **head);
 void	rotate_list(t_node **head);
 void	reverse_rotate_list(t_node **head);
 void	sort_two(t_node **head_ref);
-void	sort_three(t_node **head_ref);
+void	sort_three_1(t_node **head_ref);
+void	sort_three_2(t_node **head_ref);
 void	sort_four(t_node **head_a, t_node **head_b);
 void	sort_five(t_node **head_a, t_node **head_b);
 void	to_top_cost(t_node *head_ref);
@@ -54,14 +55,22 @@ int		get_absolute(int nb);
 int		get_max(int a, int b);
 void	to_target_cost(t_node *head_ref);
 void	total_cost(t_node *head_ref);
-void	execute_operations(t_node **head_a, t_node **head_b, t_node *cheapest);
+void	execute_instructions(t_node **head_a, t_node **head_b,
+			t_node *cheapest);
 void	rotate_both(t_node **head_a, t_node **head_b);
 void	reverse_rotate_both(t_node **head_a, t_node **head_b);
 t_node	*find_cheapest(t_node *head_ref);
 int		stack_size(t_node *head_ref);
-t_node	*find_tail(t_node **head_ref);
 t_node	*find_smallest_element(t_node *head_ref);
 void	free_list(t_node *head);
-int	create_stack(int argc, char**argv, t_node **head);
+int		create_stack(int argc, char**argv, t_node **head);
+int		is_list_ordered(t_node *head);
+void	rotate_fwd(t_node **head, int *cost, char *fwd,
+			void (*rotate)(t_node **));
+void	rotate_rev(t_node **head, int *cost, char *rev,
+			void (*rev_rotate)(t_node **));
+void	check_overflow(int sum, int digit, int sign);
+void	sort_small_stack(t_node **head_a, t_node **head_b, int size);
+void	sort_large_stack(t_node **head_a, t_node **head_b);
 
 #endif
