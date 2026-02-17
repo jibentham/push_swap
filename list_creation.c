@@ -6,11 +6,12 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:42:04 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/13 15:37:00 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/17 22:00:34 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libftprintf/ft_printf.h"
 
 t_node	*create_node(char *element)
 {
@@ -48,7 +49,7 @@ void	print_list(t_node *head)
 	temp = head;
 	while (temp != NULL)
 	{
-		printf("%d\n", temp->element);
+		ft_printf("%d\n", temp->element);
 		temp = temp->next;
 	}
 }
@@ -58,9 +59,17 @@ int	is_numeric(char *element)
 	int	i;
 
 	i = 0;
+	if (element == NULL || element[0] == '\0')
+		return (0);
+	if (element[0] == '-')
+	{
+		if (element[1] == '\0')
+			return (0);
+		i++;
+	}
 	while (element[i] != '\0')
 	{
-		if (!((element[i] >= 48 && element[i] <= 57) || element[0] == '-'))
+		if (!(element[i] >= 48 && element[i] <= 57))
 			return (0);
 		i++;
 	}
