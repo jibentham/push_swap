@@ -6,11 +6,12 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 18:19:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/13 15:20:22 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/17 21:58:46 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libftprintf/ft_printf.h"
 
 void	to_top_cost(t_node *head_ref)
 {
@@ -52,7 +53,7 @@ void	to_target_cost(t_node *head_ref)
 	}
 }
 
-void	total_cost(struct s_node *head_ref)
+void	total_cost(t_node *head_ref)
 {
 	t_node	*parser;
 

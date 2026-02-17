@@ -6,11 +6,12 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 13:25:01 by jbentham          #+#    #+#             */
-/*   Updated: 2026/02/13 15:14:44 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/17 21:59:08 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libftprintf/ft_printf.h"
 
 void	push_node(t_node **src_ref, t_node **dest_ref)
 {

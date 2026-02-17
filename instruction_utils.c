@@ -6,11 +6,12 @@
 /*   By: jbentham <jbentham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 13:59:37 by jibentham         #+#    #+#             */
-/*   Updated: 2026/02/13 15:22:50 by jbentham         ###   ########.fr       */
+/*   Updated: 2026/02/17 21:59:13 by jbentham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libftprintf/ft_printf.h"
 
 void	rotate_both(t_node **head_a, t_node **head_b)
 {
